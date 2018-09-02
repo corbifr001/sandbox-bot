@@ -16,6 +16,10 @@ client.on('message', message => {
     // Send the user's avatar URL
     message.reply(message.author.avatarURL);
   }
+    
+  if (message.content === 'created') {
+    message.channel.send(message.channel.CreatedAt);   
+  }
 
 });
 
