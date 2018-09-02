@@ -18,7 +18,8 @@ client.on('message', message => {
   }
     
   if (message.content === 'created') {
-    message.channel.send(message.channel.CreatedAt);   
+    //message.channel.send(message.channel.CreatedAt);
+     message.reply(message.channel.CreatedAt);   
   }
 
 });
