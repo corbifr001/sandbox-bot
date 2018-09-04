@@ -12,7 +12,7 @@ client.on('message', async message => {
     // MAke sure bots can't call bots...
     if(message.author.bot) return;
     
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(1).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     
     if (command === 'asshole') {
