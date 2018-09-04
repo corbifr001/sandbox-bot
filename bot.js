@@ -9,6 +9,9 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
+    // MAke sure bots can't call bots...
+    if(message.author.bot) return;
+    
     if (message.content === 'asshole') {
     	message.reply('Right back at ya!!');
   	}
@@ -31,6 +34,11 @@ client.on('message', async message => {
     const m = await message.channel.send("Ping?");
     //m.edit('Pong!');
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+  }
+    
+  if (message.content === "admin") {
+      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+        return message.reply("Sorry, you are not an admin!");
   }
 
 });
