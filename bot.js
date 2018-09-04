@@ -24,5 +24,9 @@ client.on('message', message => {
 
 });
 
+client.on('guildMemberAdd', GuildMember => {
+    
+});
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
