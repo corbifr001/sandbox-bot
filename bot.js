@@ -37,8 +37,13 @@ client.on('message', async message => {
   }
     
   if (message.content === "admin") {
-      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      
+      
+      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) ) {
         return message.reply("Sorry, you are not an admin!");
+      } else {
+          return message.reply("You are an admin");
+      }
   }
 
 });
