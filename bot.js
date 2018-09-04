@@ -8,7 +8,7 @@ client.on('ready', () => {
     //console.log('I am ready!');
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     if (message.content === 'asshole') {
     	message.reply('Right back at ya!!');
   	}
