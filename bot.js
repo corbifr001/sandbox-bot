@@ -68,7 +68,7 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberAdd', GuildMember => {
-    
+    message.channel.send('A new member joined. Say hi!');
 });
 
 // Get the Token from the server configuration
