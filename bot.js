@@ -19,7 +19,7 @@ client.on('message', message => {
     
   if (message.content === 'created') {
     //message.channel.send(message.channel.CreatedAt);
-     message.reply(message.channel.CreatedAt);   
+     message.reply('Response: '+message.channel.CreatedAt);   
   }
 
 });
@@ -28,5 +28,5 @@ client.on('guildMemberAdd', GuildMember => {
     
 });
 
-// THIS  MUST  BE  THIS  WAY
+// Get the Token from the server configuration
 client.login(process.env.BOT_TOKEN);
