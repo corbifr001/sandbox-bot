@@ -19,7 +19,8 @@ client.on('message', message => {
     
   if (message.content === 'created') {
     //message.channel.send(message.channel.CreatedAt);
-     message.reply('Response: '+message.channel.CreatedAt);   
+     message.reply('Response: '+message.channel.CreatedAt);
+     console.log('Message created at: '+message.channel.CreatedAt);
   }
 
 });
