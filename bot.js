@@ -66,6 +66,7 @@ client.on('message', async message => {
   }
     
     if (command === 'test') {
+        console.log('Test from command.');
         return message.reply('Testing the GuildMemberAdd method.');
         client.emit("guildMemberAdd", message.member);
     }
@@ -73,6 +74,7 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberAdd', GuildMember => {
+    console.log('In the event'); 
     //GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
     GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" has joined this server`);
 });
