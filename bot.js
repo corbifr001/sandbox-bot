@@ -67,7 +67,7 @@ client.on('message', async message => {
     
     if (command === 'testJoin') {
         message.reply('Testing the GuildMemberAdd method.');
-        client.emit("guildMemberAdd", message.member);
+        //client.emit("guildMemberAdd", message.member);
     }
 
 });
