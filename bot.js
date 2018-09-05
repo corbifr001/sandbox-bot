@@ -65,7 +65,7 @@ client.on('message', async message => {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
     
-    if (command === 'testJoin') {
+    if (command === 'test') {
         return message.reply('Testing the GuildMemberAdd method.');
         //client.emit("guildMemberAdd", message.member);
     }
