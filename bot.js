@@ -68,7 +68,7 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberAdd', GuildMember => {
-    defaultChannel.send('A new member joined. Say hi!');
+    //defaultChannel.send('A new member joined. Say hi!');
     
     member.guild.channels.get("welcome").send(`"${member.user.username}" has joined this server`);
 });
