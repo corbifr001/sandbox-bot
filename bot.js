@@ -68,9 +68,8 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberAdd', GuildMember => {
-    //defaultChannel.send('A new member joined. Say hi!');
-    GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
-    //member.guild.channels.get("general").send(`"${member.user.username}" has joined this server`);
+    //GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
+    GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" has joined this server`);
 });
 
 // Get the Token from the server configuration
