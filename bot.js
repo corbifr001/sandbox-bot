@@ -15,7 +15,7 @@ client.on('ready', () => {
     wait(1000);
 
     // Load all invites for all guilds and save them to the cache.
-    bot.guilds.forEach(g => {
+    client.guilds.forEach(g => {
       g.fetchInvites().then(guildInvites => {
         invites[g.id] = guildInvites;
       });
