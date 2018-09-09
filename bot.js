@@ -11,6 +11,13 @@ client.on('ready', () => {
     //client.user.setActivity(`Serving ${client.guilds.size} servers`);
     //console.log('I am ready!');
     
+    try {
+        let link = await bot.generateInvite(["ADMINISTRATOR"]);
+        console.log(link);
+    } catch(e) {
+        console.log(e.stack);
+    }
+    
     // "ready" isn't really ready. We need to wait a spell.
     wait(1000);
 
