@@ -12,7 +12,7 @@ client.on('ready', async () => {
     //console.log('I am ready!');
     
     try {
-        let link = await bot.generateInvite(["ADMINISTRATOR"]);
+        let link = await client.generateInvite(["ADMINISTRATOR"]);
         console.log(link);
     } catch(e) {
         console.log(e.stack);
