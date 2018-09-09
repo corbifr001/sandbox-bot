@@ -2,10 +2,35 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+// Initilalize the invites cache
+const invites = {};
+const wait = require('util').promisify(setTimeout);
+
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
     //client.user.setActivity(`Serving ${client.guilds.size} servers`);
     //console.log('I am ready!');
+    
+    // "ready" isn't really ready. We need to wait a spell.
+    wait(1000);
+
+    // Load all invites for all guilds and save them to the cache.
+    bot.guilds.forEach(g => {
+      g.fetchInvites().then(guildInvites => {
+        invites[g.id] = guildInvites;
+      });
+    });
+});
+
+client.on('guildMemberAdd', member => {
+    member.guild.fetchInvites().then(guildInvites => {
+        const ei = invites[member.guild.id]; // the existing invites
+        const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses); // find the invite code for which the count has increased
+        const inviter = client.users.get(invite.inviter.id);
+        const logChannel = member.guild.channels.find("name", "general");
+        logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+    });
+    return;
 });
 
 client.on('message', async message => {
