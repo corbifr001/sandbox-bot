@@ -98,12 +98,6 @@ client.on('message', async message => {
 
 });
 
-client.on('guildMemberAdd', GuildMember => {
-    console.log('In the event'); 
-    //GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
-    GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" has joined this server`);
-});
-
 client.on('guildMemberRemove', GuildMember => {
     //GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
     GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" we're sad to see you go`);
