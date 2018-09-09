@@ -29,6 +29,8 @@ client.on('guildMemberAdd', member => {
         const inviter = client.users.get(invite.inviter.id);
         const logChannel = member.guild.channels.find("name", "general");
         logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+    }).catch(e => {
+        console.log(e.stack);
     });
     return;
 });
