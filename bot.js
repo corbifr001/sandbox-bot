@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-const client = new Discord.Client();
+const client = new Discord.Client({disableEveryone: true});
 
 // Initilalize the invites cache
 const invites = {};
