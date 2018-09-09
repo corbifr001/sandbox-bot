@@ -22,11 +22,11 @@ client.on('ready', async () => {
     wait(1000);
 
     // Load all invites for all guilds and save them to the cache.
-    client.guilds.forEach(g => {
-      g.fetchInvites().then(guildInvites => {
-        invites[g.id] = guildInvites;
-      });
-    });
+    //client.guilds.forEach(g => {
+    //  g.fetchInvites().then(guildInvites => {
+    //    invites[g.id] = guildInvites;
+    //  });
+    //});
 });
 
 client.on('guildMemberAdd', member => {
