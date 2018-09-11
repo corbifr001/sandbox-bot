@@ -49,6 +49,8 @@ client.on('guildMemberAdd', member => {
             default: rolename = "who"; roleColor = "WHITE"
         }
 
+        console.log(member.guild.roles);
+        
         let role = member.guild.roles.find(r => r.name === roleName);
         if (!role) {
             try {
@@ -65,7 +67,7 @@ client.on('guildMemberAdd', member => {
         await member.addRole(role);
 
         return logChannel.send(`Role ${role.name} was successfully added`);
-        
+
     }).catch(e => {
         console.log(e.stack);
     });
