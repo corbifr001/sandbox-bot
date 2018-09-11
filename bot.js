@@ -6,11 +6,15 @@ const client = new Discord.Client({disableEveryone: true});
 const invites = {};
 const wait = require('util').promisify(setTimeout);
 
+const ladiesRole = "LADIES";
+const adultRole = "ADULT";
+const underageRole = "UNDERAGE";
+
+let role = message.guild.roles.find(r => r.name === ladiesRole);
+
 client.on('ready', async () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-    //client.user.setActivity(`Serving ${client.guilds.size} servers`);
-    //console.log('I am ready!');
-    
+ 
     try {
         let link = await client.generateInvite(["ADMINISTRATOR"]);
         console.log(link);
@@ -36,6 +40,30 @@ client.on('guildMemberAdd', member => {
         const inviter = client.users.get(invite.inviter.id);
         const logChannel = member.guild.channels.find("name", "general");
         logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+    
+        let roleName = '';
+        let roleColor = '';
+        switch (invite.code) {
+            case 'xNc8zY': roleName = "asshole"; roleColor = "RED"; break;
+            case 'GYz3Jja': rolename = "warrior"; roleColor = "BLUE"; break;
+            default: rolename = "who"; roleColor = "WHITE"
+        }
+
+        let role = message.guild.roles.find(r => r.name === roleName);
+        if (!role) {
+            try {
+                role = await message.guild.createRole({
+                    name: roleName,
+                    color: roleColor
+                });
+            } catch(e) {
+                console.log(e.stack);        
+            }
+        }
+
+        if (member.roles.has(role.id)) return logChannel.send('This user already has that role.  Weird!');
+        await member.addRole(role);
+
     }).catch(e => {
         console.log(e.stack);
     });
@@ -43,7 +71,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', async message => {
-    // MAke sure bots can't call bots...
+    // Make sure bots can't call bots...
     if(message.author.bot) return;
     
     const args = message.content.slice(1).trim().split(/ +/g);
@@ -53,12 +81,12 @@ client.on('message', async message => {
     	message.reply('Right back at ya!!');
   	}
     
-  // If the message is "what is my avatar"
-  if (command === 'what is my avatar') {
-    // Send the user's avatar URL
-    message.reply(message.author.avatarURL);
-  }
-    
+    // If the message is "what is my avatar"
+    if (command === 'what is my avatar') {
+        // Send the user's avatar URL
+        message.reply(message.author.avatarURL);
+    }
+
   if (command === 'created') {
     //message.channel.send(message.channel.CreatedAt);
      message.reply('Response: '+message.channel.CreatedAt);
@@ -108,7 +136,6 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberRemove', GuildMember => {
-    //GuildMember.guild.channels.find("name", "general").send('A new member joined. Say hi!');
     GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" we're sad to see you go`);
 });
 
