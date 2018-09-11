@@ -33,8 +33,8 @@ client.on('ready', async () => {
     });
 });
 
-client.on('guildMemberAdd', async member => {
-    member.guild.fetchInvites().then(guildInvites => {
+client.on('guildMemberAdd', member => {
+    member.guild.fetchInvites().then(async guildInvites => {
         const ei = invites[member.guild.id]; // the existing invites
         const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses); // find the invite code for which the count has increased
         const inviter = client.users.get(invite.inviter.id);
