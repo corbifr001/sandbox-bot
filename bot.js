@@ -43,14 +43,14 @@ client.on('guildMemberAdd', member => {
     
         let roleName = '';
         let roleColor = '';
-        
-        console.log(`RoleName: ${invite.code}`);
+
+        console.log(`Invite Code: ${invite.code}`);
         
 
         switch (invite.code) {
             case 'xNc8zY': roleName = "asshole"; roleColor = "RED"; break;
-            case 'wz99uds': rolename = "warrior"; roleColor = "BLUE"; break;
-            default: rolename = "who"; roleColor = "WHITE"
+            case 'wz99uds': roleName = "warrior"; roleColor = "BLUE"; break;
+            default: roleName = "who"; roleColor = "WHITE"
         }
 
         console.log(`RoleName: ${roleName}`);
