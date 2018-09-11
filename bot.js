@@ -64,6 +64,8 @@ client.on('guildMemberAdd', member => {
         if (member.roles.has(role.id)) return logChannel.send('This user already has that role.  Weird!');
         await member.addRole(role);
 
+        return logChannel.send(`Role ${role.name} was successfully added`);
+        
     }).catch(e => {
         console.log(e.stack);
     });
