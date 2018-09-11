@@ -49,8 +49,11 @@ client.on('guildMemberAdd', member => {
             default: rolename = "who"; roleColor = "WHITE"
         }
 
-        console.log(member.guild.roles);
+        member.guild.roles.forEach(r => {
+            console.log(r.name);
+        });
         
+
         let role = member.guild.roles.find(r => r.name === roleName);
         if (!role) {
             try {
