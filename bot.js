@@ -10,7 +10,7 @@ const ladiesRole = "LADIES";
 const adultRole = "ADULT";
 const underageRole = "UNDERAGE";
 
-let role = message.guild.roles.find(r => r.name === ladiesRole);
+//let role = message.guild.roles.find(r => r.name === ladiesRole);
 
 client.on('ready', async () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
