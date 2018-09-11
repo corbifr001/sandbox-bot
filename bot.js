@@ -49,10 +49,10 @@ client.on('guildMemberAdd', member => {
             default: rolename = "who"; roleColor = "WHITE"
         }
 
-        let role = message.guild.roles.find(r => r.name === roleName);
+        let role = member.guild.roles.find(r => r.name === roleName);)
         if (!role) {
             try {
-                role = await message.guild.createRole({
+                role = await member.guild.createRole({
                     name: roleName,
                     color: roleColor
                 });
