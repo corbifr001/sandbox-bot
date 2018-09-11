@@ -45,7 +45,7 @@ client.on('guildMemberAdd', member => {
         let roleColor = '';
         switch (invite.code) {
             case 'xNc8zY': roleName = "asshole"; roleColor = "RED"; break;
-            case 'GYz3Jja': rolename = "warrior"; roleColor = "BLUE"; break;
+            case 'wz99uds': rolename = "warrior"; roleColor = "BLUE"; break;
             default: rolename = "who"; roleColor = "WHITE"
         }
 
