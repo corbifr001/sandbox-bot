@@ -43,6 +43,10 @@ client.on('guildMemberAdd', member => {
     
         let roleName = '';
         let roleColor = '';
+        
+        console.log(`RoleName: ${invite.code}`);
+        
+
         switch (invite.code) {
             case 'xNc8zY': roleName = "asshole"; roleColor = "RED"; break;
             case 'wz99uds': rolename = "warrior"; roleColor = "BLUE"; break;
@@ -50,7 +54,7 @@ client.on('guildMemberAdd', member => {
         }
 
         console.log(`RoleName: ${roleName}`);
-        
+
         member.guild.roles.forEach(r => {
             if (r.name === roleName) {
                 console.log(`Role Name: ${r.name}`);
