@@ -17,7 +17,7 @@ client.on('ready', async () => {
  
     try {
         //let link = await client.generateInvite(["ADMINISTRATOR"]);
-        let link = await client.generateInvite(["SEND_MESSAGES"]);
+        let link = await client.generateInvite(["CREATE_INSTANT_INVITE","SEND_MESSAGES"]);
         //let link = await client.generateInvite(["CREATE_INSTANT_INVITE","ADD_REACTIONS","VIEW_CHANNEL","SEND_MESSAGES","EMBED_LINKS","MANAGE_NICKNAMES","MANAGE_ROLES","MANAGE_EMOJIS"]);
         console.log(link);
     } catch(e) {
