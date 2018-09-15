@@ -45,7 +45,7 @@ client.on('guildMemberAdd', member => {
         const ei = invites[member.guild.id]; // the existing invites
         const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses); // find the invite code for which the count has increased
         const inviter = client.users.get(invite.inviter.id);
-        const logChannel = member.guild.channels.find("name", proces.env.BOT_LogChannel);
+        const logChannel = member.guild.channels.find("name", process.env.BOT_LogChannel);
         logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
     
         let roleName = '';
