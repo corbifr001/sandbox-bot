@@ -35,10 +35,13 @@ client.on('ready', async () => {
 
 client.on('guildMemberAdd', member => {
     member.guild.fetchInvites().then(async guildInvites => {
+        console.log('guildMemberAdd event started!');
+        console.log('---------------------------------------------');
+        
         const ei = invites[member.guild.id]; // the existing invites
         const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses); // find the invite code for which the count has increased
         const inviter = client.users.get(invite.inviter.id);
-        const logChannel = member.guild.channels.find("name", "general");
+        const logChannel = member.guild.channels.find("name", "logs");
         logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
     
         let roleName = '';
@@ -48,9 +51,9 @@ client.on('guildMemberAdd', member => {
         
 
         switch (invite.code) {
-            case 'xNc8zY': roleName = "asshole"; roleColor = "RED"; break;
-            case 'wz99uds': roleName = "warrior"; roleColor = "BLUE"; break;
-            default: roleName = "who"; roleColor = "WHITE"
+            case process.env.Asshole: roleName = "Asshole"; roleColor = "RED"; break;
+            case process.env.Ladies: roleName = "Ladies"; roleColor = "BLUE"; break;
+            default: roleName = "Community"; roleColor = "WHITE"
         }
 
         console.log(`RoleName: ${roleName}`);
@@ -62,10 +65,8 @@ client.on('guildMemberAdd', member => {
             }
         });
         
-
         let role = member.guild.roles.find(r => r.name === roleName);
 
-        console.log('---------------------------------------------');
         console.log('---------------------------------------------');
 
         console.log(role);
