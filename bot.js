@@ -16,7 +16,8 @@ client.on('ready', async () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
  
     try {
-        let link = await client.generateInvite(["ADMINISTRATOR"]);
+        //let link = await client.generateInvite(["ADMINISTRATOR"]);
+        let link = await client.generateInvite(["CREATE_INSTANT_INVITE","ADD_REACTIONS","VIEW_CHANNEL","SEND_MESSAGES","EMBED_LINKS","MANAGE_NICKNAMES","MANAGE_ROLES","MANAGE_EMOJIS"]);
         console.log(link);
     } catch(e) {
         console.log(e.stack);
