@@ -6,9 +6,11 @@ const client = new Discord.Client({disableEveryone: true});
 const invites = {};
 const wait = require('util').promisify(setTimeout);
 
+/*
 const ladiesRole = "LADIES";
 const adultRole = "ADULT";
 const underageRole = "UNDERAGE";
+*/
 
 //let role = message.guild.roles.find(r => r.name === ladiesRole);
 
@@ -16,8 +18,8 @@ client.on('ready', async () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
  
     try {
-        //let link = await client.generateInvite(["ADMINISTRATOR"]);
-        let link = await client.generateInvite(["CREATE_INSTANT_INVITE","SEND_MESSAGES","ADD_REACTIONS","MANAGE_ROLES","MANAGE_EMOJIS","MANAGE_NICKNAMES"]);
+        let link = await client.generateInvite(["ADMINISTRATOR"]);
+        //let link = await client.generateInvite(["CREATE_INSTANT_INVITE","SEND_MESSAGES","ADD_REACTIONS","MANAGE_ROLES","MANAGE_EMOJIS","MANAGE_NICKNAMES"]);
         //let link = await client.generateInvite(["CREATE_INSTANT_INVITE","ADD_REACTIONS","VIEW_CHANNEL","SEND_MESSAGES","EMBED_LINKS","MANAGE_NICKNAMES","MANAGE_ROLES","MANAGE_EMOJIS"]);
         console.log(link);
     } catch(e) {
@@ -73,6 +75,8 @@ client.on('guildMemberAdd', member => {
 
         console.log(role);
         if (!role) {
+            return logChannel.send(`Role ${roleName} does not exist`);
+            /*
             try {
                 role = await member.guild.createRole({
                     name: roleName,
@@ -81,6 +85,7 @@ client.on('guildMemberAdd', member => {
             } catch(e) {
                 console.log(e.stack);        
             }
+            */
         }
 
         if (member.roles.has(role.id)) return logChannel.send('This user already has that role.  Weird!');
