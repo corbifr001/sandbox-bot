@@ -48,13 +48,13 @@ client.on('guildMemberAdd', member => {
         logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
     
         let roleName = '';
-        let roleColor = '';
+        let role;
 
         console.log(`Invite Code: ${invite.code}`);
         
         if (invite.code === process.env.Ladies) {
             roleName = "Ladies";
-            let role = member.guild.roles.find(r => r.name === roleName);
+            role = member.guild.roles.find(r => r.name === roleName);
             if (!role) {
                 logChannel.send(`Role ${roleName} does not exist`);
             } else {
@@ -67,7 +67,7 @@ client.on('guildMemberAdd', member => {
             }
 
             roleName = "Community";
-            let role = member.guild.roles.find(r => r.name === roleName);
+            role = member.guild.roles.find(r => r.name === roleName);
             if (!role) {
                 logChannel.send(`Role ${roleName} does not exist`);
             } else {
@@ -83,7 +83,7 @@ client.on('guildMemberAdd', member => {
 
         if (invite.code === process.env.Community) {
             roleName = "Community";
-            let role = member.guild.roles.find(r => r.name === roleName);
+            role = member.guild.roles.find(r => r.name === roleName);
             if (!role) {
                 logChannel.send(`Role ${roleName} does not exist`);
             } else {
