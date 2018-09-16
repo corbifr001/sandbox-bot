@@ -65,7 +65,7 @@ client.on('guildMemberAdd', member => {
                 } 
                 await member.addRole(role);
     
-                logChannel.send(`Role ${role.name} was successfully added`);
+                logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
 
             roleName = "Community";
@@ -78,7 +78,7 @@ client.on('guildMemberAdd', member => {
                 } 
                 await member.addRole(role);
     
-                logChannel.send(`Role ${role.name} was successfully added`);
+                logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
 
         }
@@ -94,7 +94,7 @@ client.on('guildMemberAdd', member => {
                 } 
                 await member.addRole(role);
     
-                logChannel.send(`Role ${role.name} was successfully added`);
+                logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
         }
 
@@ -178,7 +178,7 @@ client.on('message', async message => {
 });
 
 client.on('guildMemberRemove', GuildMember => {
-    GuildMember.guild.channels.find("name", "general").send(`"${GuildMember.user.username}" we're sad to see you go`);
+    GuildMember.guild.channels.find("name", process.env.BOT_LogChannel).send(`"${GuildMember.user.username}" has left the building!`);
 });
 
 // Get the Token from the server configuration
