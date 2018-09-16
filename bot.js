@@ -20,7 +20,6 @@ client.on('ready', async () => {
     try {
         let link = await client.generateInvite(["ADMINISTRATOR"]);
         //let link = await client.generateInvite(["CREATE_INSTANT_INVITE","SEND_MESSAGES","ADD_REACTIONS","MANAGE_ROLES","MANAGE_EMOJIS","MANAGE_NICKNAMES"]);
-        //let link = await client.generateInvite(["CREATE_INSTANT_INVITE","ADD_REACTIONS","VIEW_CHANNEL","SEND_MESSAGES","EMBED_LINKS","MANAGE_NICKNAMES","MANAGE_ROLES","MANAGE_EMOJIS"]);
         console.log(link);
     } catch(e) {
         console.log(e.stack);
@@ -53,46 +52,49 @@ client.on('guildMemberAdd', member => {
 
         console.log(`Invite Code: ${invite.code}`);
         
+        if (invite.code === process.env.Ladies) {
+            roleName = "Ladies";
+            let role = member.guild.roles.find(r => r.name === roleName);
+            if (!role) {
+                logChannel.send(`Role ${roleName} does not exist`);
+            } else {
+                if (member.roles.has(role.id)) {
+                    logChannel.send('This user already has that role.  Weird!');
+                } 
+                await member.addRole(role);
+    
+                logChannel.send(`Role ${role.name} was successfully added`);
+            }
 
-        switch (invite.code) {
-            case process.env.Asshole: roleName = "Asshole"; roleColor = "RED"; break;
-            case process.env.Ladies: roleName = "Ladies"; roleColor = "BLUE"; break;
-            default: roleName = "Community"; roleColor = "WHITE"
+            roleName = "Community";
+            let role = member.guild.roles.find(r => r.name === roleName);
+            if (!role) {
+                logChannel.send(`Role ${roleName} does not exist`);
+            } else {
+                if (member.roles.has(role.id)) {
+                    logChannel.send('This user already has that role.  Weird!');
+                } 
+                await member.addRole(role);
+    
+                logChannel.send(`Role ${role.name} was successfully added`);
+            }
+
         }
 
-        console.log(`RoleName: ${roleName}`);
-
-        member.guild.roles.forEach(r => {
-            if (r.name === roleName) {
-                console.log(`Role Name: ${r.name}`);
-                console.log(r);
+        if (invite.code === process.env.Community) {
+            roleName = "Community";
+            let role = member.guild.roles.find(r => r.name === roleName);
+            if (!role) {
+                logChannel.send(`Role ${roleName} does not exist`);
+            } else {
+                if (member.roles.has(role.id)) {
+                    logChannel.send('This user already has that role.  Weird!');
+                } 
+                await member.addRole(role);
+    
+                logChannel.send(`Role ${role.name} was successfully added`);
             }
-        });
-        
-        let role = member.guild.roles.find(r => r.name === roleName);
-
-        console.log('---------------------------------------------');
-
-        console.log(role);
-        if (!role) {
-            return logChannel.send(`Role ${roleName} does not exist`);
-            /*
-            try {
-                role = await member.guild.createRole({
-                    name: roleName,
-                    color: roleColor
-                });
-            } catch(e) {
-                console.log(e.stack);        
-            }
-            */
         }
-
-        if (member.roles.has(role.id)) return logChannel.send('This user already has that role.  Weird!');
-        await member.addRole(role);
-
-        return logChannel.send(`Role ${role.name} was successfully added`);
-
     }).catch(e => {
         console.log(e.stack);
     });
