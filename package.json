@@ -9,5 +9,8 @@
   "dependencies": {
     "discord.js": "11.1.0",
     "request": "2.81.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^6.2.2"
   }
 }
