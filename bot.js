@@ -93,7 +93,7 @@ client.on('guildMemberAdd', member => {
 
         // mute the user temporarily
         member.setMute(true);
-        setTimeout(member.setMute(false), 60000);
+        setTimeout(function () { member.setMute(false); }, 60000);
 
         // Now we have to refresh the invites array
         client.guilds.forEach(g => {
