@@ -68,19 +68,6 @@ client.on('guildMemberAdd', member => {
                 logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
 
-            roleName = "Community";
-            role = member.guild.roles.find(r => r.name === roleName);
-            if (!role) {
-                logChannel.send(`Role ${roleName} does not exist`);
-            } else {
-                if (member.roles.has(role.id)) {
-                    logChannel.send('This user already has that role.  Weird!');
-                } 
-                await member.addRole(role);
-    
-                logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
-            }
-
             // Send a elcome message to the Queens pending channel
             const channel = member.guild.channels.find(ch => ch.name === process.env.BOT_LadiesPendingChannel);
             if (channel) {
