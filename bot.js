@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client({disableEveryone: true});
-client.mutes = require("./mutes.json");
+//client.mutes = require("./mutes.json");
 
 // Initilalize the invites cache
 const invites = {};
