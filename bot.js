@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client({disableEveryone: true});
+client.mutes = require("./mutes.json");
 
 // Initilalize the invites cache
 const invites = {};
@@ -89,6 +90,10 @@ client.on('guildMemberAdd', member => {
                 logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
         }
+
+        // mute the user temporarily
+        member.setMute(true);
+        setTimeout(member.setMute(false), 60000);
 
         // Now we have to refresh the invites array
         client.guilds.forEach(g => {
