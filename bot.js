@@ -55,7 +55,7 @@ client.on('guildMemberAdd', member => {
         console.log(`Invite Code: ${invite.code}`);
         
         if (invite.code === process.env.Ladies) {
-            roleName = "Ladies";
+            roleName = "Queens-pending";
             role = member.guild.roles.find(r => r.name === roleName);
             if (!role) {
                 logChannel.send(`Role ${roleName} does not exist`);
@@ -81,6 +81,11 @@ client.on('guildMemberAdd', member => {
                 logChannel.send(`Role ${role.name} was successfully added to ${member.user.username}`);
             }
 
+            // Send a elcome message to the Queens pending channel
+            const channel = member.guild.channels.find(ch => ch.name === process.env.BOT_LadiesPendingChannel);
+            if (channel) {
+                channel.send(`Welcome to the server, ${member}.`);
+            }
         }
 
         if (invite.code === process.env.Community) {
