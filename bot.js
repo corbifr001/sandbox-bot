@@ -109,6 +109,7 @@ client.on('guildMemberAdd', member => {
     return;
 });
 
+/*
 client.on('message', async message => {
     // Make sure bots can't call bots...
     if(message.author.bot) return;
@@ -173,6 +174,7 @@ client.on('message', async message => {
     }
 
 });
+*/
 
 client.on('guildMemberRemove', GuildMember => {
     GuildMember.guild.channels.find("name", process.env.BOT_LogChannel).send(`"${GuildMember.user.username}" has left the building!`);
