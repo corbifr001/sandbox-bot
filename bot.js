@@ -42,7 +42,7 @@ client.on('guildMemberAdd', member => {
         console.log('guildMemberAdd event started!');
         console.log('---------------------------------------------');
         
-        //console.log(invites);
+        console.log(invites);
 
         const ei = invites[member.guild.id]; // the existing invites
         const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses); // find the invite code for which the count has increased
